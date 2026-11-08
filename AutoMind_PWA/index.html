@@ -1,0 +1,136 @@
+﻿
+@'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#07111f">
+    <meta name="description" content="AutoMind AI - Smart Car Intelligence">
+
+    <title>AutoMind AI</title>
+
+    <link rel="manifest" href="./manifest.json">
+    <link rel="icon" type="image/webp" href="./icons/icon-192.webp">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #07111f;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            height: 65px;
+            background: #0d1b2e;
+            display: flex;
+            align-items: center;
+            padding: 0 18px;
+            gap: 12px;
+            border-bottom: 1px solid #23364d;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .brand h2 {
+            font-size: 18px;
+        }
+
+        .brand p {
+            font-size: 11px;
+            color: #9eb4ca;
+            margin-top: 3px;
+        }
+
+        .status {
+            margin-left: auto;
+            font-size: 11px;
+            color: #43e6a0;
+        }
+
+        iframe {
+            display: block;
+            width: 100%;
+            height: calc(100vh - 65px);
+            height: calc(100dvh - 65px);
+            border: none;
+            background: #07111f;
+        }
+
+        @media(max-width:600px) {
+            .header {
+                height: 58px;
+                padding: 0 12px;
+            }
+
+            .logo {
+                width: 35px;
+                height: 35px;
+            }
+
+            .brand h2 {
+                font-size: 16px;
+            }
+
+            iframe {
+                height: calc(100vh - 58px);
+                height: calc(100dvh - 58px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">🚘</div>
+
+        <div class="brand">
+            <h2>AutoMind AI</h2>
+            <p>Smart Car Intelligence</p>
+        </div>
+
+        <div class="status">● LIVE</div>
+    </header>
+
+    <iframe
+        id="automind-app"
+        title="AutoMind AI application"
+        allow="clipboard-read; clipboard-write"
+        loading="eager">
+    </iframe>
+
+    <script>
+        const STREAMLIT_URL =
+            "https://automind-ai.streamlit.app/?embed=true";
+
+        document.getElementById("automind-app").src = STREAMLIT_URL;
+
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js")
+                    .catch(error => console.error(
+                        "Service Worker Error:", error
+                    ));
+            });
+        }
+    </script>
+
+</body>
+</html>
+'@ | Set-Content -Encoding UTF8 index.html

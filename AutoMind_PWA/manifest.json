@@ -1,0 +1,28 @@
+
+@'
+{
+  "name": "AutoMind AI - Smart Car Intelligence",
+  "short_name": "AutoMind AI",
+  "description": "AI-powered car price prediction and recommendation system",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#07111f",
+  "theme_color": "#07111f",
+  "icons": [
+    {
+      "src": "./icons/icon-192.webp",
+      "sizes": "192x192",
+      "type": "image/webp",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.webp",
+      "sizes": "512x512",
+      "type": "image/webp",
+      "purpose": "any"
+    }
+  ]
+}
+'@ | Set-Content -Encoding UTF8 manifest.json
